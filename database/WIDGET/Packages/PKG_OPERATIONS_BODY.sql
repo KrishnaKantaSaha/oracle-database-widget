@@ -100,7 +100,9 @@ BEGIN
 --Raise salary 
     UPDATE temp_emp_master 
     SET 
-        salary = v_new_sal 
+        salary = v_new_sal,
+		modified_by = upper(sys_context('USERENV', 'OS_USER')),
+		modified_date = sysdate
     WHERE 
             1 = 1 
         AND active_flag = 1 
@@ -232,7 +234,9 @@ BEGIN
 --Raise salary 
     UPDATE temp_emp_master 
     SET 
-        dept_id = pi_new_dept_id 
+        dept_id = pi_new_dept_id,
+		modified_by = upper(sys_context('USERENV', 'OS_USER')),
+		modified_date = sysdate
     WHERE 
             1 = 1 
         AND active_flag = 1 
